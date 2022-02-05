@@ -28,6 +28,12 @@ steps:
       version: 3.1.411
       installationPath: $(Agent.ToolsDirectory)/dotnet
 
+  - task: BatchScript@1
+    displayName: vsvars2019.cmd
+    inputs:
+      filename: Utilities/Pipelines/Scripts/vsvars2019.cmd
+      modifyEnvironment: true
+      
   - task: VSBuild@1
     displayName: Build ${{ parameters.platform }}+${{ parameters.configuration }} Solution
     inputs:
